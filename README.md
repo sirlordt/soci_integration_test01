@@ -86,7 +86,7 @@ target_compile_definitions( ${PROJECT_NAME} INTERFACE RESTINIO_EXTERNAL_STRING_V
 
 ```
 
-CMakeList.txt external/libraries/CMakeLists.txt
+CMakeList.txt external/libraries/soci/CMakeLists.txt
 
 ```cmake
 cmake_minimum_required(VERSION 3.11-3.18)
