@@ -1,0 +1,15 @@
+{
+  "endpoints_base_path": "/api/v2/",
+  "database":
+  {
+    "main":
+    {
+      "driver": "mysql",
+      "host": "127.0.0.1",
+      "user": "root",
+      "password": "dsistemas",
+      "database": "TestDB",
+      "connections": 10
+    }
+  }
+}
