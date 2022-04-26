@@ -14,6 +14,10 @@ add_subdirectory( ${PROJECT_SOURCE_DIR}/mysql )  # look in mysql subdirectory fo
 add_subdirectory( ${PROJECT_SOURCE_DIR}/nanojson )  # look in nanojson subdirectory for CMakeLists.txt to process
 # ******* nanojson ********
 
+# ******* uuid_v4 ********
+add_subdirectory( ${PROJECT_SOURCE_DIR}/uuid_v4 )  # look in uuid_v4 subdirectory for CMakeLists.txt to process
+# ******* uuid_v4 ********
+
 # ******* soci ********
 
 add_subdirectory( ${PROJECT_SOURCE_DIR}/soci )  # look in soci subdirectory for CMakeLists.txt to process

@@ -15,7 +15,8 @@ if ( NOT EXISTS "${CMAKE_CURRENT_BINARY_DIR}/build" OR
   if ( NOT EXISTS "${PROJECT_SOURCE_DIR}/git_repo/src/CMakeLists.txt" )
 
     message(STATUS "PROJECT_SOURCE_DIR=${PROJECT_SOURCE_DIR}")
-    execute_process( COMMAND git clone https://github.com/SOCI/soci ${PROJECT_SOURCE_DIR}/git_repo )
+    execute_process( COMMAND git clone https://github.com/sirlordt/soci ${PROJECT_SOURCE_DIR}/git_repo )
+    execute_process( COMMAND git -C ${PROJECT_SOURCE_DIR}/git_repo checkout soci_my_merged_features )
 
   endif()
 

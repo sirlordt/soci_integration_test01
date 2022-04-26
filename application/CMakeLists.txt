@@ -7,10 +7,17 @@ cmake_minimum_required( VERSION 3.11-3.18 )
 
 project( main )
 
+#UUID_v4 library require this
+#To avoid wear error message like next
+#inlining failed in call to ‘always_inline’ ‘__m256i _mm256_add_epi8(__m256i, __m256i)’: target specific option mismatch
+SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -march=native")
+
 #file( GLOB_RECURSE SOURCES "src/*.cpp" )
-#file( GLOB_RECURSE SOURCES "src/main_01.cpp" )
-#file( GLOB_RECURSE SOURCES "src/main_02.cpp" )
 file( GLOB_RECURSE SOURCES "src/main_03.cpp" )
+#file( GLOB_RECURSE SOURCES "src/main_02.cpp" )
+file( GLOB_RECURSE MODULES_SOURCES "src/modules/*.cpp" )
+file( GLOB_RECURSE MODULES_INCLUDES_H "src/modules/*.h" )
+file( GLOB_RECURSE MODULES_INCLUDES_HPP "src/modules/*.hpp" )
 
 file( GLOB_RECURSE CONFIGS "config/*.*" )
 
@@ -125,7 +132,7 @@ file( COPY ${CONFIGS} DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/config )
 
 #include_directories( ${CONAN_INCLUDE_DIRS} )
 
-add_executable( main ${SOURCES} )
+add_executable( main ${MODULES_SOURCES} ${MODULES_INCLUDES_H} ${MODULES_INCLUDES_HPP} ${SOURCES} )
 
 #target_include_directories( ${PROJECT_NAME} PUBLIC ${PROJECT_SOURCE_DIR}/src/modules/GUI/include )
 target_include_directories( ${PROJECT_NAME} PUBLIC ${PROJECT_SOURCE_DIR}/src/include )
@@ -146,7 +153,7 @@ target_include_directories( ${PROJECT_NAME} PUBLIC ${PROJECT_SOURCE_DIR}/src/inc
 
 #target_link_options( ${PROJECT_NAME} PRIVATE -Wl,--gc-sections )
 
-target_link_libraries( ${PROJECT_NAME} PRIVATE NANOJSON mysql_client mysql_services soci_core soci_mysql ) # soci_core soci_mysql )
+target_link_libraries( ${PROJECT_NAME} PRIVATE NANOJSON UUID_V4 mysql_client mysql_services soci_core soci_mysql ) # soci_core soci_mysql )
 
 # ***************** Conan Integration ***************
 

@@ -68,6 +68,8 @@ int main(int argc, char **argv)
 
   mysql_close(con);
 
+  mysql_library_end();
+
   std::cin.ignore();
 
   exit(0);

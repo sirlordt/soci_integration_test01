@@ -1,3 +1,3 @@
 [submodule "external/libraries/soci/git_repo"]
 	path = external/libraries/soci/git_repo
-	url = https://github.com/SOCI/soci.git
+	url = https://github.com/sirlordt/soci.git
