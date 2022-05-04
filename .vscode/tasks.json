@@ -27,7 +27,7 @@
             "label": "Delete .build/release target folder",
             "type": "shell",
             "options": {
-                "cwd": "${workspaceRoot}/.build"
+                "cwd": "${workspaceRoot}/build"
             },
             "command": "rm",
             "args": [
@@ -43,7 +43,7 @@
            "label": "CMake create build release config",
            "type": "shell",
            "options": {
-               "cwd": "${workspaceRoot}/.build"
+               "cwd": "${workspaceRoot}/build"
            },
            "command": "cmake",
            "args": [
@@ -52,8 +52,8 @@
                "-DCMAKE_BUILD_TYPE:STRING=Release",
                "-DCMAKE_C_COMPILER:FILEPATH=/bin/x86_64-linux-gnu-gcc-11",
                "-DCMAKE_CXX_COMPILER:FILEPATH=/bin/x86_64-linux-gnu-g++-11",
-               "-H${workspaceRoot}", 
-               "-B${workspaceRoot}/.build/release",
+               "-H${workspaceRoot}",
+               "-B${workspaceRoot}/build/release",
                "-G",
                "'Unix Makefiles'",
            ],
@@ -71,7 +71,7 @@
             "command": "cmake",
             "args": [
                 "--build",
-                "${workspaceRoot}/.build/release",
+                "${workspaceRoot}/build/release",
                 "--config",
                 "Release",
                 "--target",
@@ -89,7 +89,7 @@
             "label": "Delete .build/debug target folder",
             "type": "shell",
             "options": {
-                "cwd": "${workspaceRoot}/.build"
+                "cwd": "${workspaceRoot}/build"
             },
             "command": "rm",
             "args": [
@@ -105,7 +105,7 @@
             "label": "CMake create build debug config",
             "type": "shell",
             "options": {
-                "cwd": "${workspaceRoot}/.build"
+                "cwd": "${workspaceRoot}/build"
             },
             "command": "cmake",
             "args": [
@@ -114,8 +114,8 @@
                 "-DCMAKE_BUILD_TYPE:STRING=Debug",
                 "-DCMAKE_C_COMPILER:FILEPATH=/bin/x86_64-linux-gnu-gcc-11",
                 "-DCMAKE_CXX_COMPILER:FILEPATH=/bin/x86_64-linux-gnu-g++-11",
-                "-H${workspaceRoot}", 
-                "-B${workspaceRoot}/.build/debug",
+                "-H${workspaceRoot}",
+                "-B${workspaceRoot}/build/debug",
                 "-G",
                 "'Unix Makefiles'",
             ],
@@ -128,12 +128,12 @@
              "label": "CMake build debug target",
              "type": "shell",
              "options": {
-                 "cwd": "${workspaceRoot}/.build"
+                 "cwd": "${workspaceRoot}/build"
              },
              "command": "cmake",
              "args": [
                  "--build",
-                 "${workspaceRoot}/.build/debug",
+                 "${workspaceRoot}/build/debug",
                  "--config",
                  "Debug",
                  "--target",

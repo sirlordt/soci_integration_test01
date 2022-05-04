@@ -7,6 +7,12 @@ cmake_minimum_required( VERSION 3.11-3.18 )
 
 project( main )
 
+set( CMAKE_FIND_LIBRARY_SUFFIXES ".a" ) # <--- Change the preference to .a and not .so/.dll
+
+set( CMAKE_EXE_LINKER_FLAGS "-static" ) # <-- full static executable
+#set( CMAKE_EXE_LINKER_FLAGS "-fsanitize=address" ) # <-- active the address sanitizer in development
+#set( CMAKE_EXE_LINKER_FLAGS "-static-libgcc -static-libstdc++" ) # valgrind detect a memoty leak of 72 kb. Is ok is gnu standar library c++ memory leak
+
 #UUID_v4 library require this
 #To avoid wear error message like next
 #inlining failed in call to ‘always_inline’ ‘__m256i _mm256_add_epi8(__m256i, __m256i)’: target specific option mismatch
@@ -151,7 +157,7 @@ target_include_directories( ${PROJECT_NAME} PUBLIC ${PROJECT_SOURCE_DIR}/src/inc
 
 #find_package(fmt)
 
-#target_link_options( ${PROJECT_NAME} PRIVATE -Wl,--gc-sections )
+target_link_options( ${PROJECT_NAME} PRIVATE -Wl,--gc-sections )
 
 target_link_libraries( ${PROJECT_NAME} PRIVATE NANOJSON UUID_V4 mysql_client mysql_services soci_core soci_mysql ) # soci_core soci_mysql )
 
